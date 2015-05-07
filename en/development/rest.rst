@@ -54,12 +54,16 @@ this::
 
         public function add()
         {
-            $recipe = $this->Recipes->newEntity($this->request->data);
-            if ($this->Recipes->save($recipe)) {
-                $message = 'Saved';
-            } else {
-                $message = 'Error';
+            $recipe = $this->Recipes->newEntity();
+            if($this->request->is('post'){
+                $recipe = $this->Recipes->patchEntity($recipe, $this->request->data);
+                if ($this->Recipes->save($recipe)) {
+                    $message = 'Saved';
+                } else {
+                    $message = 'Error';
+                }    
             }
+            
             $this->set([
                 'message' => $message,
                 'recipe' => $recipe,
@@ -86,6 +90,7 @@ this::
 
         public function delete($id)
         {
+            $this->request->allowMethod(['post', 'delete']);
             $recipe = $this->Recipes->get($id);
             $message = 'Deleted';
             if (!$this->Recipes->delete($recipe)) {
