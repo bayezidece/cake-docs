@@ -287,7 +287,7 @@ Will output:
 
 .. code-block:: html
 
-    <img src="http://example.com/img/logo.jpg" alt="" />
+    <img src="http://example.com/img/logo.png" alt="" />
 
 You can include image files from any loaded plugin using
 :term:`plugin syntax`. To include **plugins/DebugKit/webroot/img/icon.png**
