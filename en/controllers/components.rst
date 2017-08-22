@@ -144,7 +144,7 @@ in your controller, you could access it like so::
 
         public function delete()
         {
-            if ($this->Post->delete($this->request->getData('Post.id')) {
+            if ($this->Posts->delete($this->request->getData('Posts.id')) {
                 $this->Flash->success('Post deleted.');
                 return $this->redirect(['action' => 'index']);
             }
